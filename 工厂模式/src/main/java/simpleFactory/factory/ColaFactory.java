@@ -1,9 +1,9 @@
-package factory;
+package simpleFactory.factory;
 
-import entity.Cocacola;
-import entity.Fakecola;
-import entity.Pepsicola;
-import interfaces.Cola;
+import simpleFactory.entity.Cocacola;
+import simpleFactory.entity.Fakecola;
+import simpleFactory.entity.Pepsicola;
+import simpleFactory.interfaces.Cola;
 
 /**
  * @Author: lty

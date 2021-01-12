@@ -1,5 +1,6 @@
-import entity.Cocacola;
-import factory.ColaFactory;
+package simpleFactory;
+
+import simpleFactory.factory.ColaFactory;
 
 /**
  * @Author: lty
@@ -7,7 +8,7 @@ import factory.ColaFactory;
  */
 public class Main {
     public static void main(String[] args) {
-        String drink = ColaFactory.getInstance(1).drink();
+        String drink = ColaFactory.getInstance(1).getCola();
         System.out.println(drink);
     }
 }
