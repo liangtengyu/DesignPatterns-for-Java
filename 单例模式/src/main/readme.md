@@ -172,3 +172,105 @@ demofunction(idGenerator);
 ```
 
 基于新的使用方式，我们将单例生成的对象，作为参数传递给函数（也可以通过构造函数传递给类的成员变量），可以解决单例隐藏类之间依赖关系的问题。不过，对于单例存在的其他问题，比如对 OOP 特性、扩展性、可测性不友好等问题，还是无法解决。所以，如果要完全解决这些问题，我们可能要从根上，寻找其他方式来实现全局唯一类。实际上，类对象的全局唯一性可以通过多种不同的方式来保证。我们既可以通过单例模式来强制保证，也可以通过工厂模式、IOC 容器（比如 Spring IOC 容器）来保证，还可以通过程序员自己来保证（自己在编写代码的时候自己保证不要创建两个类对象）。这就类似 Java 中内存对象的释放由 JVM 来负责，而 C++ 中由程序员自己负责，道理是一样的。
+
+## 深入理解单例
+### 如何理解单例模式中的唯一性？
+我们重新看一下单例的定义：“一个类只允许创建唯一一个对象（或者实例），那这个类就是一个单例类，这种设计模式就叫作单例设计模式，简称单例模式。”定义中提到，“一个类只允许创建唯一一个对象”。那对象的唯一性的作用范围是什么呢？是指线程内只允许创建一个对象，还是指进程内只允许创建一个对象？答案是后者，也就是说，单例模式创建的对象是进程唯一的。这里有点不好理解，我来详细地解释一下。我们编写的代码，通过编译、链接，组织在一起，就构成了一个操作系统可以执行的文件，也就是我们平时所说的“可执行文件”（比如 Windows 下的 exe 文件）。可执行文件实际上就是代码被翻译成操作系统可理解的一组指令，你完全可以简单地理解为就是代码本身。当我们使用命令行或者双击运行这个可执行文件的时候，操作系统会启动一个进程，将这个执行文件从磁盘加载到自己的进程地址空间（可以理解操作系统为进程分配的内存存储区，用来存储代码和数据）。接着，进程就一条一条地执行可执行文件中包含的代码。比如，当进程读到代码中的 User user = new User(); 这条语句的时候，它就在自己的地址空间中创建一个 user 临时变量和一个 User 对象。进程之间是不共享地址空间的，如果我们在一个进程中创建另外一个进程（比如，代码中有一个 fork() 语句，进程执行到这条语句的时候会创建一个新的进程），操作系统会给新进程分配新的地址空间，并且将老进程地址空间的所有内容，重新拷贝一份到新进程的地址空间中，这些内容包括代码、数据（比如 user 临时变量、User 对象）。
+
+所以，单例类在老进程中存在且只能存在一个对象，在新进程中也会存在且只能存在一个对象。而且，这两个对象并不是同一个对象，这也就说，`单例类中对象的唯一性的作用范围是进程内的，在进程间是不唯一的。`
+
+### 如何实现线程唯一的单例？
+
+线程唯一单例的代码实现很简单，如下所示。在代码中，我们通过一个 HashMap 来存储对象，其中 key 是线程 ID，value 是对象。这样我们就可以做到，不同的线程对应不同的对象，同一个线程只能对应一个对象。在JAVA中 线程实现单例 肯定会有同学想到ThreadLocal 实际上  ThreadLocal 工具类，可以更加轻松地实现线程唯一单例。不过，ThreadLocal 底层实现原理也是基于下面代码中所示的 HashMap。
+
+```java
+
+public class IdGenerator {
+  private AtomicLong id = new AtomicLong(0);
+
+  private static final ConcurrentHashMap<Long, IdGenerator> instances
+          = new ConcurrentHashMap<>();
+
+  private IdGenerator() {}
+
+  public static IdGenerator getInstance() {
+    Long currentThreadId = Thread.currentThread().getId();
+    instances.putIfAbsent(currentThreadId, new IdGenerator());
+    return instances.get(currentThreadId);
+  }
+
+  public long getId() {
+    return id.incrementAndGet();
+  }
+}
+```
+
+### 如何实现集群环境下的单例？
+集群相当于多个进程构成的一个集合，“集群唯一”就相当于是进程内唯一、进程间也唯一。也就是说，不同的进程间共享同一个对象，不能创建同一个类的多个对象。
+如果严格按照不同的进程间共享同一个对象来实现，那集群唯一的单例实现起来就有点难度了。具体来说，我们需要把这个单例对象序列化并存储到外部共享存储区（比如文件）。进程在使用这个单例对象的时候，需要先从外部共享存储区中将它读取到内存，并反序列化成对象，然后再使用，使用完成之后还需要再存储回外部共享存储区。为了保证任何时刻，在进程间都只有一份对象存在，一个进程在获取到对象之后，需要对对象加锁，避免其他进程再将其获取。在进程使用完这个对象之后，还需要显式地将对象从内存中删除，并且释放对对象的加锁。
+```java
+
+public class IdGenerator {
+  private AtomicLong id = new AtomicLong(0);
+  private static IdGenerator instance;
+  private static SharedObjectStorage storage = FileSharedObjectStorage(/*入参省略，比如文件地址,或者这里可以使用redis 之类的*/);
+  private static DistributedLock lock = new DistributedLock();
+  
+  private IdGenerator() {}
+
+  public synchronized static IdGenerator getInstance() 
+    if (instance == null) {
+      lock.lock();
+      instance = storage.load(IdGenerator.class);
+    }
+    return instance;
+  }
+  
+  public synchroinzed void freeInstance() {
+    storage.save(this, IdGeneator.class);
+    instance = null; //释放对象
+    lock.unlock();
+  }
+  
+  public long getId() { 
+    return id.incrementAndGet();
+  }
+}
+
+// IdGenerator使用举例
+IdGenerator idGeneator = IdGenerator.getInstance();
+long id = idGenerator.getId();
+IdGenerator.freeInstance();
+```
+
+
+结:
+
+在文章中，我们讲到单例唯一性的作用范围是进程，实际上，对于 Java 语言来说，单例类对象的唯一性的作用范围并非进程，而是类加载器（Class Loader）
+
+要回答这个问题，要理解classloader和JDK8中使用的双亲委派模型。
+classloader有两个作用：1. 用于将class文件加载到JVM中；2. 确认每个类应该由哪个类加载器加载，并且也用于判断JVM运行时的两个类是否相等。
+双亲委派模型的原理是当一个类加载器接收到类加载请求时，首先会请求其父类加载器加载，每一层都是如此，当父类加载器无法找到这个类时（根据类的全限定名称），子类加载器才会尝试自己去加载。
+所以双亲委派模型解决了类重复加载的问题， 比如可以试想没有双亲委派模型时，如果用户自己写了一个全限定名为java.lang.Object的类，并用自己的类加载器去加载，同时BootstrapClassLoader加载了rt.jar包中的JDK本身的java.lang.Object，这样内存中就存在两份Object类了，此时就会出现很多问题，例如根据全限定名无法定位到具体的类。有了双亲委派模型后，所有的类加载操作都会优先委派给父类加载器，这样一来，即使用户自定义了一个java.lang.Object，但由于BootstrapClassLoader已经检测到自己加载了这个类，用户自定义的类加载器就不会再重复加载了。所以，双亲委派模型能够保证类在内存中的唯一性。
+联系到课后的问题，所以用户定义了单例类，这样JDK使用双亲委派模型加载一次之后就不会重复加载了，保证了单例类的进程内的唯一性，也可以认为是classloader内的唯一性。当然，如果没有双亲委派模型，那么多个classloader就会有多个实例，无法保证唯一性。
+
+---
+
+
+启动类加载器:加载JAVA_HOME\lib目录下的类库
+
+↑
+
+扩展类加载器:加载JAVA_HOME\lib\ext目录下的类库,是java SE 扩展功能, jdk9 被模块化的天然扩展能力所取代
+
+↑
+
+应用程序加载器:加载用户的应用程序
+
+↑
+
+用户自定义的加载器:供用户扩展使用,加载用户想要的内容
+
+---
+
+这个类加载器的层次关系被称为类的"双亲委派模型"
