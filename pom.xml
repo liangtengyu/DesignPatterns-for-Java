@@ -18,6 +18,7 @@
         <module>桥接模式</module>
         <module>外观模式-门面模式</module>
         <module>享元模式</module>
+        <module>工厂模式</module>
     </modules>
 
 
