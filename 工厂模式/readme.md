@@ -51,3 +51,5 @@ public class ColaFactory {
 ### 抽象工厂（Abstract Factory）
 抽象工厂模式的应用场景比较特殊，没有前两种常用，简单了解一下就可以了
 
+[抽象工厂 - 项目](src/main/java/abstractFactory)
+
