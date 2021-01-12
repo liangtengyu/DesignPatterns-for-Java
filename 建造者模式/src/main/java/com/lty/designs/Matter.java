@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 /**
  * 装修物料
  */
-public interfaces Matter {
+public interface Matter {
 
     /**
      * 场景；地板、地砖、涂料、吊顶
