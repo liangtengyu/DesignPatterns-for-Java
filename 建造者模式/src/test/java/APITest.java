@@ -1,4 +1,5 @@
-import com.lty.designs.Menu.Builder;
+
+import com.lty.designs.ResourceConfig;
 import org.junit.Test;
 
 /**
@@ -8,8 +9,35 @@ import org.junit.Test;
 public class APITest {
     @Test
     public void T(){
-        Builder builder = new Builder();
-        System.out.println(builder.levelOne(122D).getDetail());
+        ResourceConfig config = new ResourceConfig.ResourceConfigBuilder()
+                .setName("test")
+                .setMaxTotal(10)
+                .setMaxIdle(1)
+                .setMinIdle(0)
+                .build();
+
+        System.out.println(config);
+
+
+    }
+
+    @Test
+    public void T2(){
+        ResourceConfig config = new ResourceConfig.ResourceConfigBuilder()
+                .setName("test")
+                .setMaxTotal(10)
+                .setMaxIdle(1)
+                .setMinIdle(11)
+                .build();
+
+        System.out.println(config);
+
+        /**
+         * java.lang.IllegalArgumentException: 无效的参数, cause : minIdle > maxTotal
+         *
+         * 	at com.lty.designs.ResourceConfig$ResourceConfigBuilder.build(ResourceConfig.java:100)
+         * 	at APITest.T2(APITest.java:31)
+         */
 
     }
 
