@@ -9,7 +9,6 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>抽象工厂</module>
         <module>建造者模式</module>
         <module>单例模式</module>
         <module>模板方法模式</module>
@@ -19,6 +18,8 @@
         <module>外观模式-门面模式</module>
         <module>享元模式</module>
         <module>工厂模式</module>
+        <module>prototpye</module>
+
     </modules>
 
 
