@@ -17,6 +17,6 @@ public class WXPayMethodImpl extends PayMethod {
         System.out.println("wx-->>");
         String s = payType.toPay();
         System.out.println(s);
-        return null;
+        return "支付调用完毕";
     }
 }

@@ -23,5 +23,8 @@ public class APITest {
         System.out.println("删除后数据库中获取的数据为:"+list);
 
         System.out.println("删除后复制的数据为:" + copyList);
+
+
+        //Spring的BeanUtils还是很方便、很常用的
     }
 }

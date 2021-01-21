@@ -9,6 +9,6 @@ import ModeType.PayType;
 public class CnPayTypeImpl implements PayType {
     public String toPay() {
         System.out.println("使用场内支付..");
-        return null;
+        return "使用场内支付成功";
     }
 }

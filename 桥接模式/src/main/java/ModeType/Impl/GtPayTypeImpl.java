@@ -10,6 +10,6 @@ public class GtPayTypeImpl implements PayType {
     public String toPay() {
         System.out.println("使用GT支付..");
 
-        return null;
+        return "使用GT支付成功";
     }
 }
