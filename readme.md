@@ -92,7 +92,7 @@
 - [单例模式  Singeton  ](singleton/readme.md)
 - [工厂模式  Factory  ](factory/readme.md)
 - [建造者模式 Builder](builder/readme.md)
-- [原型模式 prototype](原型模式/src/main/java)
+- [原型模式 prototype](prototype/readme.md)
 
 
 ## 结构类模式:
