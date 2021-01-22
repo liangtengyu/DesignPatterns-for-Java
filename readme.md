@@ -89,9 +89,9 @@
 创建型模式在创建什么(What)，由谁创建(Who)，何时创建(When)等方面都为软件设计者提供了尽可能大的灵活性。创建型模式隐藏了类的实例的创建细节，通过隐藏对象如何被创建和组合在一起达到使整个系统独立的目的。
 
 
-- [单例模式  Singeton  ](单例模式/readme.md)
-- [工厂模式  Factory  ](工厂模式/readme.md)
-- [建造者模式 Builder](建造者模式/src/main/java)
+- [单例模式  Singeton  ](singleton/readme.md)
+- [工厂模式  Factory  ](factory/readme.md)
+- [建造者模式 Builder](builder/readme.md)
 - [原型模式 prototype](原型模式/src/main/java)
 
 
@@ -105,10 +105,10 @@
 系统，在类结构型模式中一般只存在继承关系和实现关系。 - 对象结构型模式关心类与对象的组合，通过关联关系使得在一 个类中定义另一个类的实例对象，然后通过该对象调用其方法。 根据“合成复用原则”，在系统中尽量使用关联关系来替代继 承关系，因此大部分结构型模式都是对象结构型模式。
 
 
-- [适配器模式 Adapter](适配器模式/src/main/java)
-- [桥接模式 Bridge](桥接模式/src/main/java)
-- [组合模式 Composite](组合模式/src/main/java)
-- [装饰器模式 Decorator](装饰器模式/src/main/java)
+- [适配器模式 Adapter](adapter/readme.md)
+- [桥接模式 Bridge](bridge/readme.md)
+- [组合模式 Composite](composite/readme.md)
+- [装饰器模式 Decorator](decorator/readme.md)
 - [外观模式/门面模式 Facade](外观模式-门面模式/src/main/java)
 - [享元模式 Flyweight](享元模式/src/main/java)
 - [代理模式 Proxy](抽象工厂+动态代理/src/main/java)
