@@ -4,16 +4,17 @@
  */
 
 /**
- * 外观类
+ * The facade of the shape interface
+ * 提供冗余的门面,使细颗粒度的接口或类可以更易用
  * @return
  * @date   2020/11/24 15:05
  */
-public class ShapeMaker {
+public class ShapeFacade {
     private Shape circle;
     private Shape square;
     private Shape rectangle;
 
-    public ShapeMaker() {
+    public ShapeFacade() {
         circle = new Circle();
         square = new Square();
         rectangle = new Rectangle();
@@ -29,8 +30,7 @@ public class ShapeMaker {
         rectangle.draw();
     }
 
-    public static void main(String[] args) {
-        ShapeMaker shapeMaker = new ShapeMaker();
-        shapeMaker.drawrectangle();
-    }
+
+
+
 }
