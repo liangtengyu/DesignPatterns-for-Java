@@ -29,7 +29,7 @@
 - [桥接模式 Bridge](bridge/readme.md)
 - [装饰器模式 Decorator](decorator/readme.md)
 - [适配器模式 Adapter](adapter/readme.md)
-- [门面模式 Facade](facade/src/main/java)
+- [门面模式 Facade](facade/readme.md)
 - [组合模式 Composite](composite/readme.md)
 - [享元模式 Flyweight](享元模式/src/main/java)
 
