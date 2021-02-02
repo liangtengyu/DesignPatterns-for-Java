@@ -31,7 +31,7 @@
 - [适配器模式 Adapter](adapter/readme.md)
 - [门面模式 Facade](facade/readme.md)
 - [组合模式 Composite](composite/readme.md)
-- [享元模式 Flyweight](享元模式/src/main/java)
+- [享元模式 Flyweight](享元模式/readme.md)
 
 ## 行为型
 行为型模式(Behavioral Pattern)是对在不同的对象之间划分责任和算法的抽象化。
@@ -45,28 +45,27 @@
 类行为型模式：类的行为型模式使用继承关系在几个类之间分配行为，类行为型模式主要通过多态等方式来分配父类与子类的职责。
 对象行为型模式：对象的行为型模式则使用对象的聚合关联关系来分配行为，对象行为型模式主要是通过对象关联等方式来分配两个或多个类的职责。根据“合成复用原则”，系统中要尽量使用关联关系来取代继承关系，因此大部分行为型设计模式都属于对象行为型设计模式。
 
+- [观察者模式 Observer](observer/readme.md)
 
-- [职责链模式  Chain ofResponsibility](/src/main/java)
+- [职责链模式  Chain ofResponsibility](/readme.md)
 
-- [命令模式 Command](/src/main/java)
+- [命令模式 Command](/readme.md)
 
-- [解释器模式 Interpreter](/src/main/java)
+- [解释器模式 Interpreter](/readme.md)
 
-- [迭代器模式 Iterator](/src/main/java)
+- [迭代器模式 Iterator](/readme.md)
 
-- [中介者模式 Mediator](/src/main/java)
+- [中介者模式 Mediator](/readme.md)
 
-- [备忘录模式 Memento](/src/main/java)
+- [备忘录模式 Memento](/readme.md)
 
-- [观察者模式 Observer](/src/main/java)
+- [状态模式 State](/readme.md)
 
-- [状态模式 State](/src/main/java)
+- [策略模式 Strategy](/readme.md)
 
-- [策略模式 Strategy](/src/main/java)
+- [模板方法模式 TemplateMethod](/readme.md)
 
-- [模板方法模式 TemplateMethod](/src/main/java)
-
-- [访问者模式 Visitor](/src/main/java)
+- [访问者模式 Visitor](/readme.md)
 
 
 
@@ -104,16 +103,7 @@
 
 
 ---
-
-## 观察者模式定义
-观察者模式的表现形式是，在对象之间定义一个一对多的依赖，当一个对象状态改变的时候，所有依赖的对象都会自动接收到通知。
-
-生产者消费者模型如消息队列，一般都可以看成是观察者模式。在 Android 中，最常见的观察者模式应用就是广播了。
-
-在 Java 中的 util 包下也有 Observable 和 Observer，不过这个 Observable 是一个类而不是一个接口，其次它的所有方法比如 addObserver、deleteObserver、setChanged、notifyObservers 等都是加锁的，notifyObservers 由于加锁可能存在两个问题，新添加的观察者没有收到通知和注销的观察者依旧收到了通知。
-
-
-
+ 
 
 ## 责任链模式
 
