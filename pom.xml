@@ -21,6 +21,7 @@
         <module>prototpye</module>
         <module>composite</module>
         <module>observer</module>
+        <module>proxy</module>
 
     </modules>
 

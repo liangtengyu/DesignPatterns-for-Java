@@ -47,6 +47,8 @@
 
 - [观察者模式 Observer](observer/readme.md)
 
+- [模板方法模式 TemplateMethod](/readme.md)
+
 - [职责链模式  Chain ofResponsibility](/readme.md)
 
 - [命令模式 Command](/readme.md)
@@ -62,8 +64,6 @@
 - [状态模式 State](/readme.md)
 
 - [策略模式 Strategy](/readme.md)
-
-- [模板方法模式 TemplateMethod](/readme.md)
 
 - [访问者模式 Visitor](/readme.md)
 
