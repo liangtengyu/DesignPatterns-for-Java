@@ -9,10 +9,10 @@
 创建型模式在创建什么(What)，由谁创建(Who)，何时创建(When)等方面都为软件设计者提供了尽可能大的灵活性。创建型模式隐藏了类的实例的创建细节，通过隐藏对象如何被创建和组合在一起达到使整个系统独立的目的。
 
 
-- [单例模式  Singeton  ](singleton/readme.md)
-- [工厂模式  Factory  ](factory/readme.md)
-- [建造者模式 Builder](builder/readme.md)
-- [原型模式 prototype](prototype/readme.md)
+- [单例模式  Singeton  ](singleton)
+- [工厂模式  Factory  ](factory)
+- [建造者模式 Builder](builder)
+- [原型模式 prototype](prototype)
 
 
 ## 结构型:
@@ -25,13 +25,13 @@
 系统，在类结构型模式中一般只存在继承关系和实现关系。 - 对象结构型模式关心类与对象的组合，通过关联关系使得在一 个类中定义另一个类的实例对象，然后通过该对象调用其方法。 根据“合成复用原则”，在系统中尽量使用关联关系来替代继 承关系，因此大部分结构型模式都是对象结构型模式。
 
 
-- [代理模式 Proxy](抽象工厂+动态代理/src/main/java)
-- [桥接模式 Bridge](bridge/readme.md)
-- [装饰器模式 Decorator](decorator/readme.md)
-- [适配器模式 Adapter](adapter/readme.md)
-- [门面模式 Facade](facade/readme.md)
-- [组合模式 Composite](composite/readme.md)
-- [享元模式 Flyweight](享元模式/readme.md)
+- [代理模式 Proxy](proxy)
+- [桥接模式 Bridge](bridge)
+- [装饰器模式 Decorator](decorator)
+- [适配器模式 Adapter](adapter)
+- [门面模式 Facade](facade)
+- [组合模式 Composite](composite)
+- [享元模式 Flyweight](flyweight)
 
 ## 行为型
 行为型模式(Behavioral Pattern)是对在不同的对象之间划分责任和算法的抽象化。
@@ -45,27 +45,27 @@
 类行为型模式：类的行为型模式使用继承关系在几个类之间分配行为，类行为型模式主要通过多态等方式来分配父类与子类的职责。
 对象行为型模式：对象的行为型模式则使用对象的聚合关联关系来分配行为，对象行为型模式主要是通过对象关联等方式来分配两个或多个类的职责。根据“合成复用原则”，系统中要尽量使用关联关系来取代继承关系，因此大部分行为型设计模式都属于对象行为型设计模式。
 
-- [观察者模式 Observer](observer/readme.md)
+- [观察者模式 Observer](observer)
 
-- [模板方法模式 TemplateMethod](/readme.md)
+- [模板方法模式 TemplateMethod]()
 
-- [职责链模式  Chain ofResponsibility](/readme.md)
+- [职责链模式  Chain ofResponsibility]()
 
-- [命令模式 Command](/readme.md)
+- [命令模式 Command]()
 
-- [解释器模式 Interpreter](/readme.md)
+- [解释器模式 Interpreter]()
 
-- [迭代器模式 Iterator](/readme.md)
+- [迭代器模式 Iterator]()
 
-- [中介者模式 Mediator](/readme.md)
+- [中介者模式 Mediator]()
 
-- [备忘录模式 Memento](/readme.md)
+- [备忘录模式 Memento]()
 
-- [状态模式 State](/readme.md)
+- [状态模式 State]()
 
-- [策略模式 Strategy](/readme.md)
+- [策略模式 Strategy]()
 
-- [访问者模式 Visitor](/readme.md)
+- [访问者模式 Visitor]()
 
 
 
