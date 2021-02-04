@@ -9,16 +9,16 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>建造者模式</module>
-        <module>单例模式</module>
-        <module>模板方法模式</module>
-        <module>装饰器模式</module>
-        <module>适配器模式</module>
-        <module>桥接模式</module>
-        <module>外观模式-门面模式</module>
-        <module>享元模式</module>
-        <module>工厂模式</module>
-        <module>prototpye</module>
+        <module>builder</module>
+        <module>singleton</module>
+        <module>template</module>
+        <module>decorator</module>
+        <module>adapter</module>
+        <module>bridge</module>
+        <module>facade</module>
+        <module>flyweight</module>
+        <module>factory</module>
+        <module>prototype</module>
         <module>composite</module>
         <module>observer</module>
         <module>proxy</module>
