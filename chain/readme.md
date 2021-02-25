@@ -7,11 +7,11 @@
 
 `version1`使用的是链表的方式,存储handler 
 
-![version-1](src/main/java/com/liangtengyu/version1)
+[点我查看 version-1](src/main/java/com/liangtengyu/version1)
 
 `version2` 使用的是有序list来存储handler, 并且使用了模版方法的方式抽象出调用successor的逻辑使得项目更加简洁.
 
-![version-2](src/main/java/com/liangtengyu/version2)
+[点我查看 version-2](src/main/java/com/liangtengyu/version2)
 
 
 责任链模式的实例:
