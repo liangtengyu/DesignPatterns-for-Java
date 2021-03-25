@@ -2,6 +2,8 @@
 
 设计模式分为3大类:
 
+---
+
 ## 创建型:
 
 创建型模式(Creational Pattern)对类的实例化过程进行了抽象，能够将软件模块中对象的创建和对象的使用分离。为了使软件的结构更加清晰，外界对于这些对象只需要知道它们共同的接口，而不清楚其具体地实现细节，使整个系统的设计更加符合单一职责原则。
@@ -14,6 +16,7 @@
 - [建造者模式 Builder](builder)
 - [原型模式 prototype](prototype)
 
+---
 
 ## 结构型:
 
@@ -25,13 +28,17 @@
 系统，在类结构型模式中一般只存在继承关系和实现关系。 - 对象结构型模式关心类与对象的组合，通过关联关系使得在一 个类中定义另一个类的实例对象，然后通过该对象调用其方法。 根据“合成复用原则”，在系统中尽量使用关联关系来替代继 承关系，因此大部分结构型模式都是对象结构型模式。
 
 
-- [代理模式 Proxy](proxy)
-- [桥接模式 Bridge](bridge)
-- [装饰器模式 Decorator](decorator)
 - [适配器模式 Adapter](adapter)
-- [门面模式 Facade](facade)
+- [桥接模式 Bridge](bridge)
 - [组合模式 Composite](composite)
+- [装饰器模式 Decorator](decorator)
 - [享元模式 Flyweight](flyweight)
+- [门面模式 Facade](facade)
+- [代理模式 Proxy](proxy)
+
+
+---
+
 
 ## 行为型
 行为型模式(Behavioral Pattern)是对在不同的对象之间划分责任和算法的抽象化。
@@ -49,26 +56,26 @@
 
 - [模板方法模式 TemplateMethod](template)
 
-- [职责链模式  Chain ofResponsibility](chain)
+- [策略模式 strategy](strategy)
 
+- [职责链模式  Chain of Responsibility](chain)
+
+- [状态模式 State](state)
+
+- [迭代器模式 Iterator](iterator)
+  
 - [命令模式 Command]()
 
 - [解释器模式 Interpreter]()
-
-- [迭代器模式 Iterator]()
 
 - [中介者模式 Mediator]()
 
 - [备忘录模式 Memento]()
 
-- [状态模式 State]()
-
-- [策略模式 strategy]()
-
-- [访问者模式 Visitor]()
+- [访问者模式 Visitor](visitor)
 
 
-
+---
 
 
 ## 六大设计原则

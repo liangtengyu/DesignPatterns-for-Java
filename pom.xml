@@ -24,6 +24,9 @@
         <module>proxy</module>
         <module>strategy</module>
         <module>chain</module>
+        <module>state</module>
+        <module>iterator</module>
+        <module>visitor</module>
 
     </modules>
 
