@@ -27,6 +27,7 @@
         <module>state</module>
         <module>iterator</module>
         <module>visitor</module>
+        <module>command</module>
 
     </modules>
 
