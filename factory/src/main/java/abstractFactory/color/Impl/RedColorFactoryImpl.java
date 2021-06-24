@@ -9,7 +9,6 @@ import abstractFactory.color.ColorFactory;
 public class RedColorFactoryImpl implements ColorFactory {
     public String getColor() {
         System.out.println("喷涂红色");
-
         return "红色瓶子";
     }
 }

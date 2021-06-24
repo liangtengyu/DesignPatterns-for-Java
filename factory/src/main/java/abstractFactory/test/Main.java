@@ -14,7 +14,7 @@ import simpleFactory.interfaces.Cola;
  */
 public class Main {
     public static void main(String[] args) {
-        String colaAndColor = FactoryProducer.getColaAndColor("fake", "yellow");
+        String colaAndColor = FactoryProducer.getColaAndColor("cocacola", "red");
         System.out.println(colaAndColor);
 
     }
